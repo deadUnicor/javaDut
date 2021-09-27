@@ -46,15 +46,14 @@ public class ArrayList{
 
 
     public void add(Object elem){
-        if(_length + 1 == _capacity){
+        _arr[_length] = elem;
+        _length += 1;
+        if(_length == _capacity){
             _capacity *= 2;
             Object[] newArr = new Object[_capacity];
             copyFromOld(newArr);
             _arr = newArr;
         }
-        
-        _arr[_length] = elem;
-        _length += 1;
     }
 
     private void copyFromOld(Object[] newArr){
