@@ -1,5 +1,5 @@
 
-public class ArrayList{
+public class ArrayList implements ICollection<Object>{
     private Object[] _arr;
     private int _capacity;
     private int _length;
@@ -25,7 +25,7 @@ public class ArrayList{
         _capacity = _arr.length;
         _length = 0;
     }
-
+    @Override
     public int size(){
         return _length;
     }
@@ -34,26 +34,32 @@ public class ArrayList{
         return _capacity;
     }
 
+    @Override
+    //удаление за O(0) ))
     public void remove(int pos){
         if(pos >= _length){
             return;
         }
 
-        _arr[pos] = _arr[_length - 1];
-        _arr[_length - 1] = new Object();
         _length -= 1;
+        _arr[pos] = _arr[_length];
+        _arr[_length] = null;
     }
 
-
+    @Override
     public void add(Object elem){
         _arr[_length] = elem;
         _length += 1;
         if(_length == _capacity){
-            _capacity *= 2;
-            Object[] newArr = new Object[_capacity];
-            copyFromOld(newArr);
-            _arr = newArr;
+            resize();
         }
+    }
+
+    private void resize(){
+        _capacity *= 2;
+        Object[] newArr = new Object[_capacity];
+        copyFromOld(newArr);
+        _arr = newArr;
     }
 
     private void copyFromOld(Object[] newArr){
@@ -61,7 +67,8 @@ public class ArrayList{
             newArr[i] = _arr[i];
         }
     }
-
+    
+    @Override
     public boolean contains(Object elem){
         for (int i = 0; i < _length; ++i) {
             if(_arr[i] == elem){
@@ -71,6 +78,7 @@ public class ArrayList{
         return false;
     }
 
+    @Override
     public void printContent(){
         for (int i = 0; i < _length; ++i) {
             System.out.println(_arr[i].toString());
