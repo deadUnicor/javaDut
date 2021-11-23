@@ -66,8 +66,7 @@ public class Program {
                         stringBuilder.append(input.substring(1, input.length())).append(" ");
                     } else if (isValidWordToRemove(stringBuilder.toString(), input)) {
                         String sub = input.substring(1);
-                        int index = stringBuilder.indexOf(sub);
-                        stringBuilder = stringBuilder.delete(index, input.length()-1);
+                        stringBuilder = new StringBuilder(stringBuilder.toString().replaceAll(sub+"\s*", "").trim());
                     }else{
                         System.out.println("Word is not found");
                     }
