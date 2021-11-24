@@ -4,7 +4,7 @@ public class Program {
     public static void main(String[] Args) throws Exception{
         TestEverything();
         //SaveTester.SaveAll();
-        TextContainer tc = SaveTester.DeSerialize();
+        SaveTester.DeSerialize();
     }
 
     public static void TestEverything(){
