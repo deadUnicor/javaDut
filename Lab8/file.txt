@@ -1,0 +1,2 @@
+public java.lang.String TextContainer.text:some cool text;
+public int TextContainer.someNumber:123;
