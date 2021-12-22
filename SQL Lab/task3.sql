@@ -13,6 +13,7 @@ create table User(
 create table Song(
     Id char(36) not null primary key ,
     Name varchar(36),
+    Contents blob,
     CreatorId char(36) not null,
     IsPremium tinyint(1),
     Duration int,

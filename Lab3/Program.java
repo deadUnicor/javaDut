@@ -20,9 +20,9 @@ public class Program{
         /*Вивести в консоль всі змінні в відсортованому вигляді
          які починаються з «с» та трансформувати їх в верхній регістр 
          */
-        List<String> myList = Arrays.asList("a1", "a2", "b1", "c2", "c1"); 
+        List<String> myList = Arrays.asList("Cac1", "ca2", "b1", "c2", "c1"); 
         
-        var result = myList.stream().filter(x -> (x.startsWith("c"))).map(x -> (x.toUpperCase())).sorted().toList();
+        var result = myList.stream().filter(x -> x.startsWith("c") ).map(x -> (x.toUpperCase())).sorted().toList();
         String joinedString = String.join(", ", result);
         System.out.println(joinedString);
     }

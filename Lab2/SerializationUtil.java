@@ -13,18 +13,13 @@ public class SerializationUtil implements Serializable{
     private void writeObject(ObjectOutputStream oos) 
       throws IOException {
         oos.defaultWriteObject();
-        oos.writeObject(_pojo.number);
-        oos.writeObject(_pojo.isUsed);
-        oos.writeObject(_pojo.title);
+        oos.writeObject(_pojo);
     }
 
     private void readObject(ObjectInputStream ois) 
       throws ClassNotFoundException, IOException {
         ois.defaultReadObject();
-        Pojo pojo = new Pojo();
-        pojo.number = (int)ois.readObject();
-        pojo.isUsed = (boolean)ois.readObject();
-        pojo.title =  (String)ois.readObject();
+        Pojo pojo = (Pojo)ois.readObject();
         _pojo = pojo;
     }
 }
